@@ -1,5 +1,6 @@
 /* V11 multi-pass mobile layout corrections */
 @media(max-width:760px){
+ body{padding-bottom:calc(154px + env(safe-area-inset-bottom))!important}
  .app-main{padding-top:0!important}
  .pairbar{position:relative!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;grid-template-areas:none!important}
  .pair-select-wrap{grid-column:1/7!important;grid-area:auto!important}
@@ -10,6 +11,8 @@
  .chart-panel{height:auto!important;min-height:0!important;overflow:hidden!important}
  .chart-host{height:52vh!important;min-height:400px!important}
  .chart-panel.with-indicator .chart-host{height:42vh!important;min-height:330px!important}
- .toast{bottom:156px!important}
+ .mobile-nav{bottom:calc(78px + env(safe-area-inset-bottom))!important}
+ .mobile-trade-bar{bottom:calc(10px + env(safe-area-inset-bottom))!important}
+ .toast{bottom:calc(156px + env(safe-area-inset-bottom))!important}
 }
 @media(max-width:390px){.chart-host{min-height:380px!important}.chart-panel.with-indicator .chart-host{min-height:310px!important}}
