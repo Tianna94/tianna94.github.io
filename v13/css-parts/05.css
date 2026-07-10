@@ -1,0 +1,25 @@
+@media(max-width:390px){.chart-section{height:312px}.product-nav button{padding-right:11px;font-size:15px}.timeframe-tabs{gap:22px}.trade-workspace{grid-template-columns:minmax(0,1.3fr) minmax(136px,.7fr)}.order-entry{padding-inline:10px}.order-book{padding-inline:7px}.book-row{font-size:12px}.book-mid strong{font-size:21px}.submit-order{font-size:17px}.chart-inline-info{width:272px;font-size:11px}.chart-inline-info b{font-size:11px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* V13 mobile density pass: keep chart useful while exposing the complete order action above the bottom navigation */
+@media(max-width:760px){
+ .chart-section{height:300px}
+ .order-entry{padding-top:12px;padding-bottom:18px}
+ .side-tabs{height:40px}
+ .contract-controls{margin-top:10px}
+ .contract-controls button,.select-field{height:47px;margin-top:10px}
+ .order-field{height:51px;margin-top:9px}
+ .percentage-slider{margin:15px 4px 11px}
+ .balance-lines{gap:5px}
+ .tp-sl{margin-top:11px}
+ .submit-order{height:51px;margin-top:14px;border-radius:14px}
+ .demo-caption{display:none}
+}
+@media(max-width:390px){.chart-section{height:286px}}
+/* compact iPhone pass aligned to high-density exchange apps */
+@media(max-width:760px){
+ .chart-section{height:250px}
+ .tp-sl{margin-top:8px}
+ .submit-order{height:48px;margin-top:10px}
+ .bottom-nav{--nav-h:64px}
+}
+@media(max-width:390px){.chart-section{height:225px}}
