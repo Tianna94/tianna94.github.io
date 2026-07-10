@@ -1,0 +1,3 @@
+nderMarketPage();renderInstrumentList();renderInsights();$('#app').classList.add('ready');[500,1800,4000].forEach(t=>setTimeout(audit,t));hydrateCurrent();hydrateAll();state.poll=setInterval(()=>{if(!document.hidden){hydrateAll();fetchBookTrades().catch(()=>{});checkOrders()}},10000)}
+init();
+})();
