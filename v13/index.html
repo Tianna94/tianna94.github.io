@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="ATLAS X V13 — 面向客户展示的高保真数字资产模拟交易终端">
+<title>ATLAS X V13｜高保真模拟交易终端</title>
+<link rel="stylesheet" href="./styles.css?v=1301">
+</head>
+<body>
+<svg class="svg-sprite" aria-hidden="true">
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></symbol>
+  <symbol id="i-candle" viewBox="0 0 24 24"><path d="M7 3v4M7 15v6M4 7h6v8H4zM17 3v7M17 18v3M14 10h6v8h-6z"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></symbol>
+  <symbol id="i-indicator" viewBox="0 0 24 24"><path d="M4 18V8M9 18V4M14 18v-6M19 18V7"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m4 11 8-7 8 7v9h-6v-6h-4v6H4z"/></symbol>
+  <symbol id="i-market" viewBox="0 0 24 24"><path d="M4 19V8M10 19V4M16 19v-7M22 19V6"/></symbol>
+  <symbol id="i-trade" viewBox="0 0 24 24"><path d="M5 17 17 5M9 5h8v8M19 19H7v-8"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 7h14a2 2 0 0 1 2 2v10H6a2 2 0 0 1-2-2z"/><path d="M4 8V6a2 2 0 0 1 2-2h11M15 12h5"/></symbol>
+  <symbol id="i-analysis" viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M7 15l4-5 3 2 5-6"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></symbol>
+</svg>
+
+<div id="intro" class="intro" aria-live="polite">
+  <div class="intro-inner">
+    <span class="intro-kicker">ATLAS X · CLIENT DEMO</span>
+    <h1>邓总，这是我用一个下午完成的<br>专业交易终端原型。</h1>
+    <p>实时公开行情 · 模拟现货与永续 · 专业K线与订单簿</p>
+    <button id="introEnter" type="button">进入终端</button>
+  </div>
+</div>
+
+<div id="app" class="app" aria-hidden="true">
+  <header class="app-topbar">
+    <div class="brand-lockup"><span class="brand-mark">A</span><span><b>ATLAS X</b><small>PRO TERMINAL</small></span></div>
+    <nav class="product-nav" aria-label="产品类型">
+      <button data-product-tab="convert">闪兑</button>
+      <button class="active" data-product-tab="spot">现货</button>
+      <button data-product-tab="perp">合约</button>
+      <button data-product-tab="onchain">链上</button>
+      <button data-product-tab="strategy">策略</button>
+    </nav>
+    <div class="top-actions"><span id="connectionState" class="connection-state"><i></i>实时</span></div>
+  </header>
+
+  <main>
+    <section id="page-trade" class="page active" data-page="trade">
+      <div class="instrument-row">
+        <button id="instrumentButton" class="instrument-button" type="button">
+          <span id="instrumentName">BTC/USDT</span>
+          <span id="instrumentTag" class="instrument-tag">现货</span>
+          <svg><use href="#i-chevron"/></svg>
+        </button>
+        <div class="instrument-actions">
+          <button id="chartSettingsButton" class="icon-button" type="button" aria-label="图表设置"><svg><use href="#i-candle"/></svg></button>
+          <button id="moreButton" class="icon-button" type="button" aria-label="更多设置"><svg><use href="#i-more"/></svg><i class="dot"></i></button>
+        </div>
+      </div>
+
+      <div class="chart-toolbar">
+        <div id="timeframeTabs" class="timeframe-tabs">
+          <button data-timeframe="15m">15分</button>
+          <button class="active" data-timeframe="1H">1时</button>
+          <button data-timeframe="4H">4时</button>
+          <button data-timeframe="1D">1日</button>
+        </div>
+        <div class="chart-tools">
+          <button id="latestButton" class="text-tool" type="button">最新<svg><use href="#i-chevron"/></svg></button>
+          <button id="indicatorButton" class="icon-tool" type="button" aria-label="技术指标"><svg><use href="#i-indicator"/></svg></button>
+          <button id="fullscreenButton" class="icon-tool" type="button" aria-label="全屏图表"><svg><use href="#i-expand"/></svg></button>
+        </div>
+      </div>
+
+      <section id="chartSection" class="chart-section">
+        <div class="chart-series-labels"><span id="emaFastLabel">EMA10: --</span><span id="emaSlowLabel">EMA20: --</span></div>
+        <div id="chartInlineInfo" class="chart-inline-info" hidden>
+          <button type="button" aria-label="关闭K线数据"><svg><use href="#i-close"/></svg></button>
+          <div><span>时间</span><b data-k="time">--</b></div>
+          <div><span>开盘</span><b data-k="open">--</b></div>
+          <div><span>最高</span><b data-k="high">--</b></div>
+          <div><span>最低</span><b data-k="low">--</b></div>
+          <div><span>收盘</span><b data-k="close">--</b></div>
+          <div><span>涨跌幅</span><b data-k="change">--</b></div>
+          <div><span>振幅</span><b data-k="amplitude">--</b></div>
+          <div><span>成交量</span><b data-k="volume">--</b></div>
+        </div>
+        <div id="chartHost" class="chart-host"><canvas id="chartCanvas"></canvas><canvas id="chartOverlay"></canvas></div>
+        <div class="chart-loading" id="chartLoading">正在加载实时K线</div>
+      </section>
+
+      <section class="trade-workspace">
+        <div class="order-entry">
+          <div id="spotSideTabs" class="side-tabs"><button class="active buy" data-side="buy">买入</button><button data-side="sell">卖出</button></div>
+          <div id="perpPositionTabs" class="side-tabs hidden"><button class="active buy" data-position-action="open">开仓</button><button data-position-action="close">平仓</button></div>
+
+          <div id="contractControls" class="contract-controls hidden">
+            <button id="marginModeButton" type="button">全仓<svg><use href="#i-chevron"/></svg></button>
+            <button id="leverageButton" type="button"><span id="leverageText">10x</span><svg><use href="#i-chevron"/></svg></button>
+          </div>
+
+          <button id="orderTypeButton" class="select-field" type="button"><span id="orderTypeText">市价委托</span><svg><use href="#i-chevron"/></svg></button>
+          <label id="priceField" class="order-field hidden"><span>价格</span><input id="orderPrice" inputmode="decimal" autocomplete="off"><b>USDT</b></label>
+          <label class="order-field"><span id="amountFieldLabel">金额</span><input id="orderAmount" inputmode="decimal" autocomplete="off"><button id="amountUnitButton" type="button">USDT<svg><use href="#i-chevron"/></svg></button></label>
+          <div class="percentage-slider"><input id="amountSlider" type="range" min="0" max="100" value="0"><div><i></i><i></i><i></i><i></i><i></i></div></div>
+
+          <div class="balance-lines"><div><span>可用</span><b id="availableBalance">100,000.00 USDT</b></div><div><span id="capacityLabel">可买</span><b id="capacityValue">-- BTC</b></div></div>
+          <label class="tp-sl"><input id="tpSlCheck" type="checkbox"><span>止盈/止损</span></label>
+          <button id="submitOrder" class="submit-order buy" type="button">买入 BTC</button>
+          <p class="demo-caption">模拟交易，不产生真实资产。</p>
+        </div>
+
+        <aside class="order-book">
+          <div class="book-meta"><div><span>价格</span><small>(USDT)</small></div><div><span>数量</span><small id="bookQtyUnit">(BTC)</small></div></div>
+          <div id="bookAsks" class="book-list asks"></div>
+          <div class="book-mid"><strong id="bookMidPrice">--</strong><span id="bookMidChange">--</span></div>
+          <div id="bookBids" class="book-list bids"></div>
+          <div class="book-ratio"><span class="buy-ratio" id="buyRatio">B 50%</span><i><b id="ratioBar"></b></i><span class="sell-ratio" id="sellRatio">50% S</span></div>
+        </aside>
+      </section>
+
+      <section class="account-section">
+        <div class="account-tabs"><button class="active" data-account-tab="positions">持仓 <span id="positionCount">0</span></button><button data-account-tab="orders">当前委托 <span id="orderCount">0</span></button><button data-account-tab="history">成交记录</button></div>
+        <div id="accountList" class="account-list"></div>
+      </section>
+    </section>
+
+    <section id="page-home" class="page content-page" data-page="home">
+      <header class="page-head"><button class="back-button" data-nav="trade" aria-label="返回交易"><svg><use href="#i-back"/></svg></button><div><span>CLIENT PRESENTATION</span><h1>项目展示</h1></div></header>
+      <div class="showcase-hero"><span>邓总</span><h2>这不是一张静态效果图，<br>而是一套可以操作的交易终端原型。</h2><p>从实时行情、K线手势、订单簿到模拟下单与账户分析，全部围绕移动端高密度交易体验完成。</p></div>
+      <div class="feature-grid"><article><b>实时行情</b><p>优先接入公开行情，网络异常自动使用演示数据。</p></article><article><b>专业图表</b><p>拖动、缩放、十字光标与单根K线数据。</p></article><article><b>模拟交易</b><p>现货、永续、委托、持仓和成交记录。</p></article><article><b>响应式</b><p>针对手机、平板和桌面分别布局。</p></article></div>
+    </section>
+
+    <section id="page-markets" class="page content-page" data-page="markets">
+      <header class="page-head"><button class="back-button" data-nav="trade" aria-label="返回交易"><svg><use href="#i-back"/></svg></button><div><span>MARKETS</span><h1>市场行情</h1></div></header>
+      <label class="search-bar"><svg><use href="#i-search"/></svg><input id="marketSearch" placeholder="搜索 BTC、ETH、SOL"></label>
+      <div id="marketCards" class="market-cards"></div>
+    </section>
+
+    <section id="page-assets" class="page content-page" data-page="assets">
+      <header class="page-head"><button class="back-button" data-nav="trade" aria-label="返回交易"><svg><use href="#i-back"/></svg></button><div><span>PORTFOLIO</span><h1>资产账户</h1></div></header>
+      <section class="asset-overview"><span>模拟总权益</span><strong id="assetEquity">$100,000.00</strong><em id="assetReturn">+0.00%</em><div><span>可用余额<b id="assetCash">$100,000.00</b></span><span>未实现盈亏<b id="assetPnl">$0.00</b></span></div></section>
+      <div id="assetPositions" class="asset-list"></div>
+    </section>
+
+    <section id="page-analysis" class="page content-page" data-page="analysis">
+      <header class="page-head"><button class="back-button" data-nav="trade" aria-label="返回交易"><svg><use href="#i-back"/></svg></button><div><span>ANALYTICS</span><h1>交易分析</h1></div></header>
+      <section class="analysis-summary"><div class="risk-ring"><strong id="riskScore">0</strong><span>风险评分</span></div><div><b id="riskTitle">风险较低</b><p id="riskText">当前账户以现金为主，整体敞口较低。</p></div></section>
+      <div id="analysisMetrics" class="analysis-metrics"></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="主要导航">
+    <button data-nav="home"><svg><use href="#i-home"/></svg><span>首页</span></button>
+    <button data-nav="markets"><svg><use href="#i-market"/></svg><span>行情</span></button>
+    <button class="active center" data-nav="trade"><svg><use href="#i-trade"/></svg><span>交易</span></button>
+    <button data-nav="assets"><svg><use href="#i-wallet"/></svg><span>资产</span></button>
+    <button data-nav="analysis"><svg><use href="#i-analysis"/></svg><span>分析</span></button>
+  </nav>
+</div>
+
+<div id="instrumentSheet" class="sheet" hidden>
+  <div class="sheet-backdrop" data-close-sheet="instrumentSheet"></div>
+  <section class="sheet-panel">
+    <header><div><span>选择交易对</span><b id="sheetProductTitle">现货市场</b></div><button class="icon-button" data-close-sheet="instrumentSheet" aria-label="关闭"><svg><use href="#i-close"/></svg></button></header>
+    <label class="search-bar"><svg><use href="#i-search"/></svg><input id="instrumentSearch" placeholder="搜索币种"></label>
+    <div id="instrumentList" class="instrument-list"></div>
+  </section>
+</div>
+
+<div id="optionSheet" class="sheet" hidden>
+  <div class="sheet-backdrop" data-close-sheet="optionSheet"></div>
+  <section class="sheet-panel compact-sheet">
+    <header><div><span id="optionSheetLabel">选择</span><b id="optionSheetTitle">订单类型</b></div><button class="icon-button" data-close-sheet="optionSheet" aria-label="关闭"><svg><use href="#i-close"/></svg></button></header>
+    <div id="optionList" class="option-list"></div>
+  </section>
+</div>
+
+<div id="moreSheet" class="sheet" hidden>
+  <div class="sheet-backdrop" data-close-sheet="moreSheet"></div>
+  <section class="sheet-panel compact-sheet">
+    <header><div><span>终端设置</span><b>显示与交互</b></div><button class="icon-button" data-close-sheet="moreSheet" aria-label="关闭"><svg><use href="#i-close"/></svg></button></header>
+    <div class="settings-list">
+      <button id="toggleVolumeSetting"><span>成交量</span><b>显示</b></button>
+      <button id="toggleEmaSetting"><span>EMA指标</span><b>显示</b></button>
+      <button id="resetAccountButton"><span>重置模拟账户</span><b>恢复 $100,000</b></button>
+      <button id="exportButton"><span>导出账户报告</span><b><svg><use href="#i-download"/></svg></b></button>
+    </div>
+  </section>
+</div>
+
+<div id="toast" class="toast" role="status"></div>
+<script src="./chart.js?v=1301"></script>
+<script src="./app.js?v=1301"></script>
+</body>
+</html>
